@@ -4,6 +4,7 @@ body {
     color: #fff;
     background-color: #000033; /* Deepest ocean color */
     overflow-x: hidden; /* Prevent horizontal scroll */
+    min-height: 8000vh; /* Extremely tall for immersive scrolling */
 }
 
 #scroll-container {
@@ -65,6 +66,7 @@ body {
     border-radius: 5px;
     font-size: 1.5em;
     z-index: 1000;
+    display: none !important; /* Hide old depth marker */
 }
 
 #ocean-background {
@@ -108,5 +110,53 @@ body {
     #depth-marker {
         font-size: 1em;
         padding: 6px 10px;
+    }
+}
+
+/* Make page extremely tall */
+/* body rule updated above */
+
+#depth-indicator-container {
+    position: fixed;
+    bottom: 20vh; /* Fixed at 20% from the bottom of the viewport */
+    left: 0;
+    width: 100%;
+    display: flex; /* Changed to flex for easier alignment if needed */
+    flex-direction: column;
+    align-items: center;
+    z-index: 1000;
+    pointer-events: none; /* Allow clicks to pass through */
+}
+
+#depth-indicator-line {
+    width: 80%; /* Dashed line doesn't have to be full width, can be adjusted */
+    border-top: 2px dashed #fff;
+    margin-bottom: 10px; /* Space between line and text */
+}
+
+#depth-indicator-text {
+    color: #fff;
+    font-size: 1.8em; /* Prominent text */
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7); /* Text shadow for better readability */
+}
+
+/* Adjustments for new depth marker visibility (JS will toggle display:none on container) */
+/* Hide old depth marker if it was missed or for safety */
+/* #depth-marker rule updated above */
+
+/* Responsive adjustments for new depth indicator */
+@media (max-width: 768px) {
+    #depth-indicator-text {
+        font-size: 1.5em;
+    }
+    #depth-indicator-line {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    #depth-indicator-text {
+        font-size: 1.2em;
     }
 }
