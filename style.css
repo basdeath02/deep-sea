@@ -71,10 +71,10 @@ body {
 
 #ocean-background {
     position: fixed;
-    top: 0;
+    top: 15vh; /* Match the height of #wave-canvas */
     left: 0;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 15vh); /* Fill remaining viewport height */
     z-index: -1; /* Behind all content */
 }
 
@@ -159,4 +159,14 @@ body {
     #depth-indicator-text {
         font-size: 1.2em;
     }
+}
+
+#wave-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 15vh; /* Waves occupy top 15% of viewport height */
+    z-index: 10; /* Above main background, below depth indicator if they could overlap */
+    /* background-color: #87CEEB; */ /* Optional: for testing, or if JS doesn't fill it */
 }
