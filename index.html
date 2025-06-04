@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Sea Dive</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="depth-marker">0m</div>
+    <div id="scroll-container">
+        <section id="surface" class="ocean-layer" data-depth="0" data-creatures="Seagulls, Pelicans" data-facts="The ocean surface is teeming with life.">
+            <h2>Surface (Epipelagic Zone)</h2>
+            <div class="content">
+                <p>Creatures: <span class="creatures"></span></p>
+                <p>Fact: <span class="fact"></span></p>
+            </div>
+        </section>
+        <section id="sunlight-zone" class="ocean-layer" data-depth="200" data-creatures="Dolphins, Tuna, Sea Turtles" data-facts="This zone receives the most sunlight, allowing photosynthesis.">
+            <h2>Sunlight Zone (Epipelagic Zone)</h2>
+            <p>Depth: 0 - 200 meters</p>
+            <div class="content">
+                <p>Creatures: <span class="creatures"></span></p>
+                <p>Fact: <span class="fact"></span></p>
+            </div>
+        </section>
+        <section id="twilight-zone" class="ocean-layer" data-depth="1000" data-creatures="Swordfish, Squid, Cuttlefish" data-facts="Sunlight barely penetrates here, so plants cannot grow.">
+            <h2>Twilight Zone (Mesopelagic Zone)</h2>
+            <p>Depth: 200 - 1,000 meters</p>
+            <div class="content">
+                <p>Creatures: <span class="creatures"></span></p>
+                <p>Fact: <span class="fact"></span></p>
+            </div>
+        </section>
+        <section id="midnight-zone" class="ocean-layer" data-depth="4000" data-creatures="Anglerfish, Vampire Squid, Gulper Eel" data-facts="This zone is in complete darkness and under immense pressure. Many animals are bioluminescent.">
+            <h2>Midnight Zone (Bathypelagic Zone)</h2>
+            <p>Depth: 1,000 - 4,000 meters</p>
+            <div class="content">
+                <p>Creatures: <span class="creatures"></span></p>
+                <p>Fact: <span class="fact"></span></p>
+            </div>
+        </section>
+        <section id="abyssopelagic-zone" class="ocean-layer" data-depth="6000" data-creatures="Tripod Fish, Dumbo Octopus, Sea Pig" data-facts="Few creatures can survive the extreme cold and pressure of the abyss.">
+            <h2>Abyss (Abyssopelagic Zone)</h2>
+            <p>Depth: 4,000 - 6,000 meters</p>
+            <div class="content">
+                <p>Creatures: <span class="creatures"></span></p>
+                <p>Fact: <span class="fact"></span></p>
+            </div>
+        </section>
+        <section id="hadalpelagic-zone" class="ocean-layer" data-depth="11000" data-creatures="Snailfish, Amphipods, Foraminifera" data-facts="This is the deepest part of the ocean, found in oceanic trenches.">
+            <h2>The Trenches (Hadalpelagic Zone)</h2>
+            <p>Depth: 6,000 - 11,000 meters</p>
+            <div class="content">
+                <p>Creatures: <span class="creatures"></span></p>
+                <p>Fact: <span class="fact"></span></p>
+            </div>
+        </section>
+        <section id="challenger-deep" class="ocean-layer" data-depth="11034" data-creatures="Unknown, possibly new species" data-facts="The Challenger Deep is the deepest known point in the Earth's seabed hydrosphere.">
+            <h2>Challenger Deep</h2>
+            <p>Depth: ~10,935 meters (approx)</p>
+             <div class="content">
+                <p>Creatures: <span class="creatures"></span></p>
+                <p>Fact: <span class="fact"></span></p>
+            </div>
+        </section>
+    </div>
+    <canvas id="ocean-background"></canvas>
+    <script src="background.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

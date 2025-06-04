@@ -1,0 +1,112 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    background-color: #000033; /* Deepest ocean color */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+#scroll-container {
+    width: 100%;
+    position: relative;
+}
+
+.ocean-layer {
+    min-height: 100vh; /* Each layer takes at least full viewport height */
+    padding: 50px 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: background-color 1s ease; /* Smooth transition for background */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle separator */
+}
+
+/* Define background colors for each layer - these will be overridden by JS for gradient */
+#surface { background-color: #87CEEB; color: #333; } /* Sky Blue */
+#sunlight-zone { background-color: #00BFFF; } /* Deep Sky Blue */
+#twilight-zone { background-color: #1E90FF; } /* Dodger Blue */
+#midnight-zone { background-color: #0000CD; } /* Medium Blue */
+#abyssopelagic-zone { background-color: #00008B; } /* Dark Blue */
+#hadalpelagic-zone { background-color: #000033; } /* Very Dark Blue */
+#challenger-deep { background-color: #000000; } /* Black */
+
+.ocean-layer h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.ocean-layer p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    max-width: 600px;
+}
+
+.content {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+}
+
+.content .creatures, .content .fact {
+    font-weight: bold;
+}
+
+#depth-marker {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1.5em;
+    z-index: 1000;
+}
+
+#ocean-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Behind all content */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .ocean-layer h2 {
+        font-size: 2em;
+    }
+    .ocean-layer p {
+        font-size: 1em;
+    }
+    #depth-marker {
+        top: 10px;
+        right: 10px;
+        font-size: 1.2em;
+        padding: 8px 12px;
+    }
+    .content {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ocean-layer {
+        padding: 30px 10px;
+    }
+    .ocean-layer h2 {
+        font-size: 1.8em;
+    }
+    .ocean-layer p {
+        font-size: 0.9em;
+    }
+    #depth-marker {
+        font-size: 1em;
+        padding: 6px 10px;
+    }
+}
