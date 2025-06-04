@@ -1,29 +1,54 @@
 document.addEventListener('DOMContentLoaded', () => {
     const scrollContainer = document.getElementById('scroll-container');
-    const depthMarker = document.getElementById('depth-marker');
+    // const depthMarker = document.getElementById('depth-marker'); // Removed
+    const depthIndicatorContainer = document.getElementById('depth-indicator-container');
+    const depthIndicatorText = document.getElementById('depth-indicator-text');
     const oceanLayers = Array.from(document.querySelectorAll('.ocean-layer'));
     const body = document.body;
 
     // Max depth roughly based on Challenger Deep for gradient calculation
-    const MAX_DEPTH = 11034;
+    // const MAX_DEPTH = 11034; // Removed/Replaced
+    const MAX_DISPLAY_DEPTH = 10924; // For the text display
 
     // Initial colors for gradient (light to dark)
     const surfaceColor = [135, 206, 235]; // Sky Blue
     const deepColor = [0, 0, 51];      // Deep Dark Blue/Black
 
+    // SUNLIGHT_ZONE_ENTRY_SCROLL will be dynamic via offsetTop
+
     function updateDepth() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const currentDepth = Math.min(MAX_DEPTH, (scrollTop / scrollHeight) * MAX_DEPTH);
+        // const currentDepth = Math.min(MAX_DEPTH, (scrollTop / scrollHeight) * MAX_DEPTH); // Old calculation
+        // depthMarker.textContent = `${Math.round(currentDepth)}m`; // Old marker update
 
-        depthMarker.textContent = `${Math.round(currentDepth)}m`;
+        // Indicator Visibility & Depth Calculation
+        const sunlightZone = document.getElementById('sunlight-zone');
+        if (!sunlightZone) {
+            console.error("#sunlight-zone element not found!");
+            return;
+        }
+        const sunlightZoneOffsetTop = sunlightZone.offsetTop;
 
-        // Calculate color transition
-        const scrollFraction = Math.min(scrollTop / (scrollHeight * 0.8), 1); // Reach darkest color before hitting absolute bottom
+        if (scrollTop >= sunlightZoneOffsetTop) {
+            if (depthIndicatorContainer) depthIndicatorContainer.style.display = 'flex';
 
-        const r = Math.round(surfaceColor[0] + (deepColor[0] - surfaceColor[0]) * scrollFraction);
-        const g = Math.round(surfaceColor[1] + (deepColor[1] - surfaceColor[1]) * scrollFraction);
-        const b = Math.round(surfaceColor[2] + (deepColor[2] - surfaceColor[2]) * scrollFraction);
+            const scrollRangeForDepthDisplay = scrollHeight - sunlightZoneOffsetTop;
+            const currentScrollInDisplayRange = Math.max(0, scrollTop - sunlightZoneOffsetTop);
+            let displayedDepth = (currentScrollInDisplayRange / scrollRangeForDepthDisplay) * MAX_DISPLAY_DEPTH;
+            displayedDepth = Math.min(displayedDepth, MAX_DISPLAY_DEPTH); // Cap at max depth
+            if (depthIndicatorText) depthIndicatorText.textContent = Math.round(displayedDepth) + " METERS DEEP";
+
+        } else {
+            if (depthIndicatorContainer) depthIndicatorContainer.style.display = 'none';
+        }
+
+        // Calculate color transition using global scroll fraction
+        const globalScrollFraction = Math.min(scrollTop / (scrollHeight * 0.95), 1); // Reach darkest color a bit before absolute bottom
+
+        const r = Math.round(surfaceColor[0] + (deepColor[0] - surfaceColor[0]) * globalScrollFraction);
+        const g = Math.round(surfaceColor[1] + (deepColor[1] - surfaceColor[1]) * globalScrollFraction);
+        const b = Math.round(surfaceColor[2] + (deepColor[2] - surfaceColor[2]) * globalScrollFraction);
 
         body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
 
