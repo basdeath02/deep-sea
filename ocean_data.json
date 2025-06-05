@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Surface (Epipelagic Zone)",
+    "depth": "0 - 200 meters",
+    "creatures": ["Seagulls", "Pelicans"],
+    "fact": "The ocean surface is teeming with life."
+  },
+  {
+    "name": "Sunlight Zone (Epipelagic Zone)",
+    "depth": "0 - 200 meters",
+    "creatures": ["Dolphins", "Tuna", "Sea Turtles"],
+    "fact": "This zone receives the most sunlight, allowing photosynthesis."
+  },
+  {
+    "name": "Twilight Zone (Mesopelagic Zone)",
+    "depth": "200 - 1,000 meters",
+    "creatures": ["Swordfish", "Squid", "Cuttlefish"],
+    "fact": "Sunlight barely penetrates here, so plants cannot grow."
+  },
+  {
+    "name": "Midnight Zone (Bathypelagic Zone)",
+    "depth": "1,000 - 4,000 meters",
+    "creatures": ["Anglerfish", "Vampire Squid", "Gulper Eel"],
+    "fact": "This zone is in complete darkness and under immense pressure. Many animals are bioluminescent."
+  },
+  {
+    "name": "Abyss (Abyssopelagic Zone)",
+    "depth": "4,000 - 6,000 meters",
+    "creatures": ["Tripod Fish", "Dumbo Octopus", "Sea Pig"],
+    "fact": "Few creatures can survive the extreme cold and pressure of the abyss."
+  },
+  {
+    "name": "The Trenches (Hadalpelagic Zone)",
+    "depth": "6,000 - 11,000 meters",
+    "creatures": ["Snailfish", "Amphipods", "Foraminifera"],
+    "fact": "This is the deepest part of the ocean, found in oceanic trenches."
+  },
+  {
+    "name": "Challenger Deep",
+    "depth": "~10,935 meters (approx)",
+    "creatures": ["Unknown, possibly new species"],
+    "fact": "The Challenger Deep is the deepest known point in the Earth's seabed hydrosphere."
+  }
+]
